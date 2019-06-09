@@ -35,29 +35,12 @@ session_start();
   </ul>
 </nav>
     <div class="container">
-        <h1>Employees</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Gender</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $employees = $_SESSION['employees'];
-                foreach ($employees as $employee) {
-                    echo "<tr>";
-                    echo "<td>{$employee['id']}</td>";
-                    echo "<td><a href='/view.php?id={$employee['id']}'>{$employee['name']}</a>";
-                    echo "</td>";
-                    echo "<td>{$employee['gender']}</td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+        <h1>Logged Out</h1>
+        <?php
+        session_unset();
+        session_destroy();
+        var_dump($_SESSION['employees']);
+        ?>
     </div>
 
 </body>

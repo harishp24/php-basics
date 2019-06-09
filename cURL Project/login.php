@@ -1,13 +1,12 @@
 <?php
-session_start();
-?>
+session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>cURL</title>
+    <title>View Details</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -35,30 +34,16 @@ session_start();
   </ul>
 </nav>
     <div class="container">
-        <h1>Employees</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Gender</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $employees = $_SESSION['employees'];
-                foreach ($employees as $employee) {
-                    echo "<tr>";
-                    echo "<td>{$employee['id']}</td>";
-                    echo "<td><a href='/view.php?id={$employee['id']}'>{$employee['name']}</a>";
-                    echo "</td>";
-                    echo "<td>{$employee['gender']}</td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+        <?php
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "https://api.jsonbin.io/b/5cf9fc8ad2127723845d5b8f/2"); # API URL
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); # Get Site Data
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); # Skip SSL Host Verification
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); # Skip SSL Peer Verification
+            $json = curl_exec($ch);
+            //var_dump($json);
+            $_SESSION['employees'] = json_decode($json, true);
+        ?>
     </div>
-
 </body>
 </html>
