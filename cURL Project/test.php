@@ -10,8 +10,6 @@ $json = curl_exec($ch);
 $employees = json_decode($json, true);
 //var_dump($employees[1]['Address']) . "<br>";
 $address = $employees[1]['Address'];
-//var_dump($address);
-foreach($address as $emp){
-    echo $emp ."\n";
-}
+echo "City: {$address['City']}\n";
+echo "Country: {$address['Country']}";
 
