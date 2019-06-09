@@ -82,7 +82,6 @@ session_start();
                         echo "<td><b>Country</b></td>";
                         echo "<td>{$employee['Country']}</td>";
                         echo "</tr>";
-                        
                     }   
                 }
                 ?>
