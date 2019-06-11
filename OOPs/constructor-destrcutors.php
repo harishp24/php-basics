@@ -3,15 +3,15 @@
 class User 
 {
     public function __construct(){
-        echo "From Contructor";
+        echo "From Contructor\n";
     }
     public function getName(){
-        echo "john";
+        echo "john\n";
     }
     public function __destruct(){
-        echo "From Destructor";
+        echo "From Destructor\n";
     }
 }
 
 $user = new User;
-echo $user->getName();
+$user->getName();
